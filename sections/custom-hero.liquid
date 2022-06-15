@@ -248,13 +248,19 @@
                    {{ section.settings.line-title-2}}
                 </h1>
                 <div class="underline-gradient">
-                  <div class="subtitle">{{section.settings.small-subtitle}} </div>		
+              
+                  <div class="subtitle">{{section.settings.small-subtitle}} </div>
+              		
               </div>
+              
               {% for block in section.blocks %}
                 {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                  
+                  
               		<div class="container-button-phone position-static justify-content-center">
                     	<a href="{{ block.settings.button_link }}" role="button" class="btn btn-secondary btn-3d action-btn"> {{ block.settings.button_label }}</a>
-                	</div>  
+                	</div>
+                    
             	  {% endif %}
             	{% endfor %}
             </div>
