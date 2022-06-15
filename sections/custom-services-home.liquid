@@ -276,9 +276,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
 	display:flex;
 	justify-content:center;
 }
-.services .card-footer{
-  align-items: center;
-}
+
 
 
 
@@ -311,6 +309,7 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
                       	
                           <div class="card-wrapper">
                             <div id="card-2" class="card card-rotating text-center">
+
                                 <!--Front Side-->
                                 <div class="face front">
 
@@ -323,26 +322,34 @@ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
                                         <div class="f-center w-100 price position-absolute">
                                             <strong>{{block.settings.product.price | money }}</strong>
                                         </div>
+                                        
                                     </div>
 
 
                                 </div>
                                 <!--Front Side-->
+
                                 <!--Back Side-->
                                 <div class="face back">
+
                                     <!-- Content -->
                                     <div class="content align-items-stretch text-center f-center flex-wrap h-100 ">
                                       <h4 class="title-back"> {{block.settings.product.title}} </h4>
                                         <p>{{block.settings.product.description | strip_html}}</p>
-                                      	<div class="card-footer align-items-center d-flex justify-content-between w-100 price px-4 container-footer-card">
+      
+                                      	<div class="card-footer d-flex justify-content-between w-100 price px-4 container-footer-card">
                                           <div class="price">{{block.settings.product.price | money }}</div>
                                           <a href="{{block.settings.product.url}}" class="btn btn-secondary btn-3d f-center" role="button">
                                             <i class="fa fa-shopping-cart"></i>
                                           </a>
                                         </div>
                                     </div>
+
+                                    <!--Back Side-->
+
                                 </div>
                             </div>
+                            <!-- Rotating card -->
                         	</div>
                         {% endif %}
                       {% endfor %}
