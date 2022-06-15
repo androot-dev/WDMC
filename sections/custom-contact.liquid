@@ -1,0 +1,293 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+  padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.background-color }};
+  height:auto;
+}
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+
+.contactUs .form-col {
+  background-color: #f5f4f4;
+ 
+    background-color: #f5f4f4;
+    
+    border-radius: 0px;
+    box-shadow: 0px 1px 13px 0px #8b7e7e61;
+}
+.contactUs .form-col .title{
+	 font-size: 3.5rem;
+}
+.contactUs .contact-form form input{
+    width: 100%;
+}
+.contactUs form .btn{
+	border-radius: 0px;
+}
+.contactUs .info-box {
+  padding: 10px;
+  word-wrap: break-word;
+}
+
+.contactUs .info-box h3, .contactUs .info-box p, .contactUs .info-box a {
+  word-wrap: break-word;
+}
+
+.contactUs .map {
+  border-radius: 0px;
+}
+
+.contactUs .map .load-map {
+  z-index: 1;
+}
+
+.contactUs .map iframe {
+  z-index: 2;
+ border-radius: 0px;
+}
+
+.contactUs .contact-form > .title-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+@media (max-width: 575px) {
+  .contactUs .contact-form > .title-section:before {
+    display: none;
+  }
+}
+
+.contactUs .contact-form form input, .contactUs .contact-form form select, .contactUs .contact-form form textarea {
+  font-weight: inherit;
+}
+.contactUs .info-box{
+	background: #f5f4f4;
+}
+.contactUs #subject{
+	padding:10px;
+	height: auto;
+}
+
+.contactUs form .section-title h1{
+	background: #f5f4f4;
+	padding: 10px;
+}
+.contactUs .info-box h3{
+	color: var(--secondary);
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+.contactUs .info-box p{
+	text-align:center;
+}
+{%- endstyle -%}
+    
+
+  <section class="contactUs my-section section-{{ section.id }}-padding section-{{ section.id }}">
+    <div class="container contact-form">
+
+        <div class="row mb-5 align-items-center p-3">
+
+          <div class="col-lg-6 map pl-0 pr-md-0  pr-lg-5 mb-0 mb-md-5">
+            <iframe class="mb-4 mb-lg-0"
+              src="{{section.settings.embed_map}}"
+              style="border:0; width: 100%; height: 384px;" allowfullscreen="" loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <div class="col-lg-6 form-col p-5 ">
+            {%- form 'contact', id: 'ContactForm', class: 'email-form' -%}
+              <div class="row mx-0 justify-content-center section-title">
+                <h1 class="title text-center">{{ section.settings.form_title }}</h1>
+                {%- if form.posted_successfully? -%}
+                    <div class="form-status form-status-list form__message" tabindex="-1" autofocus>{% render 'icon-success' %} {{ 'templates.contact.form.post_success' | t }}</div>
+                  {%- elsif form.errors -%}
+                    <div class="form__message">
+                      <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>{% render 'icon-error' %} {{ 'templates.contact.form.error_heading' | t }}</h2>
+                    </div>
+                    <ul class="form-status-list caption-large" role="list">
+                      <li>
+                        <a href="#ContactForm-email" class="link">
+                          {{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}
+                        </a>
+                      </li>
+                    </ul>
+                  {%- endif -%}
+              </div>
+              <div class="row pt-3">
+                <div class="col form-group">
+                  <input type="text" name="contact[name]" class="input-primary form-control" id="name" placeholder="Your Name"
+                    required="">
+                </div>
+                <div class="col form-group">
+                  <input type="email" class="form-control input-primary" name="contact[email]" id="email"
+                    placeholder="Your Email" required="">
+                </div>
+              </div>
+              <div class="form-group">
+                <select class="input-primary form-control" name="subject" id="subject">
+                  <option>Feedback</option>
+                  <option>Claim</option>
+                  <option>Another reason</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <textarea name="contact[body]" class=" input-primary form-control" name="message" rows="5" placeholder="Message"
+                  required=""></textarea>
+              </div>
+            <div class="d-flex justify-content-center align-items-end"><button class="btn-secondary btn btn-3d" type="submit"><i class="fas fa-envelope mr-3"></i>Send</button></div>
+            {%- endform -%} 
+
+
+          </div>
+
+        </div>
+
+        <div class="row mb-5">
+            {% assign class = "" %} 
+            {% for block in section.blocks %}
+                {% if block.type == "info-box" %}
+                  {% if forloop.index == 1 %}
+                    {% assign class = "col-lg-6" %}
+                  {% else %}
+                    {% assign class = "col-lg-3 col-md-6" %} 
+                  {% endif %}
+                  
+                 
+          <div class="{{class}}">
+            <div class="info-box flex-column border-menu d-flex flex-wrap align-items-center mb-4">
+
+              <h3 class="d-flex align-items-center text-primary-normal justify-content-center"> <i
+                  class="pr-2 fa fas {{block.settings.icon}}"></i>{{block.settings.heading}}
+              </h3>
+              <p class="m-0 p-0"> <a 
+                class="text-primary-normal color-secondary hover_a" {% if block.settings.new_tab %} target="_blank"  {% endif %}
+                  href="{{block.settings.url}}">
+                  {{block.settings.label}}
+                </a></p>
+            </div>
+          </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+      </div>
+  </section>
+
+
+
+
+{% schema %}
+{
+  "name": "Custom Contact Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+      {
+        "type": "text",
+        "id": "form_title",
+        "label": "Form Title",
+        "default": "Get In Touch"
+        },
+      {
+        "type": "url",
+        "id": "embed_map",
+        "label": "Map Embed Url"
+      },  
+    {
+      "type": "header",
+      "content": "Custom Colors"
+    },
+    {
+        "id": "background-color",
+        "type": "color",
+        "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks":[
+      {
+        "type": "info-box",
+        "name": "Info Box",
+        "limit": 3,
+        "settings":[
+            {
+                "type": "text",
+                "id": "heading",
+                "label": "Heading",
+                "default": "Heading"
+            },
+            {
+                "type": "text",
+                "id": "icon",
+                "label": "Fontawesome Icon"
+            },
+            {
+                "type": "text",
+                "id": "label",
+                "label": "Label",
+                "default": "Label"
+            },
+            {
+                "type": "url",
+                "id": "url",
+                "label": "Link Url"
+            },
+            {
+                "type": "checkbox",
+                "id": "new_tab",
+                "label": "Open in new tab"
+            }        
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Custom Contact Section"
+    }
+  ]
+}
+{% endschema %}

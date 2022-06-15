@@ -1,0 +1,415 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+  padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.background-color }};
+  height:auto;
+}
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+.category .section-title h1{
+	{% if section.settings.background-color %}
+	background: {{ section.settings.background-color }};
+	{% endif %}
+}
+.category .section-category {
+  position: relative;
+  overflow: hidden;
+}
+.category .owl-stage{
+	padding:20px 0;
+}
+.category .hov-img-zoom {
+  display: block;
+  overflow: hidden;
+}
+
+.category .hov-img-zoom img {
+  width: 100%;
+  -webkit-transition: all 0.6s;
+  transition: all 0.6s;
+}
+
+.category .hov-img-zoom:hover img {
+  -webkit-transform: scale(1.1);
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.category .item-category-1 {
+  width: auto;
+  height: 100%;
+  margin: 0;
+  border-radius: 0px;
+}
+.category .item-category-1::before {
+  content: '';
+  background: rgba(0, 0, 0, 0.3);
+  /*OVERLAY*/
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border-radius: 0px;
+}
+
+.category .item-category-1 h2 {
+  position: absolute;
+  color: #fff;
+  z-index: 3;
+  text-transform: none !important;
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+.category .item-category-1 .ab-c-m {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+}
+
+.category .item-category-1 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.category .item-by-category:hover img {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+@media (max-width: 767px) {
+  .category .item-category-1, .category .item-category-2, .category .item-category-3 {
+    width: 100%;
+  }
+  .category .item-category-3 img {
+    width: 100%;
+    height: 100%;
+  }
+  .category .item-category-1 .ab-c-m, .category .item-category-2 .ab-c-m, .category .item-category-3 .ab-c-m {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+  }
+  .category .item-category-1 img, .category .item-category-2 img {
+    width: 100%;
+  }
+  .category .item-category-3 img {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: -20px;
+  }
+}
+
+
+.category .section-category .seemore {
+  position: absolute;
+  right: 50px;
+  bottom: 30px;
+  background: #153360;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  padding: 18px 20px;
+  display: inline-block;
+  padding: 2px 8px;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  /*border: 2px solid #fff;*/
+  z-index: 1;
+  text-align: center;
+  width: 150px;
+  font-family: "Fuente-questa";
+}
+
+.category .section-category .seemore-2 {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.category .item-by-category:hover h2 {
+  opacity: 0;
+}
+
+.category .section-category .content-button a:hover {
+  color: #ece8e1;
+}
+
+.category .section-category .content-button a:hover span.bg {
+  width: 110%;
+}
+
+.category .section-category .content-button a:hover span.text:after {
+  background: #ece8e1;
+  border-radius: 0px;
+}
+
+.category .hover-item-category {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: #0202027d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  /* transform: scale(0); */
+  -webkit-transition: 400ms;
+  transition: 400ms;
+  opacity: 0;
+	flex-direction:column;
+}
+
+.category .item-by-category:hover .hover-item-category {
+  -webkit-transition: 400ms;
+  transition: 400ms;
+  opacity: 1;
+}
+.category .hover-item-category h3{
+
+font-size: 3rem;
+font-weight: 700;
+color:white;
+
+}
+.category .container-item{
+	height: 400px;
+}
+.category .hover-item-category i {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  font-size: 30px;
+ display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.category .hover-item-category i::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    background: var(--secondary);
+    
+}
+.category .owl-carousel{
+	padding: 10px;
+}
+.category .owl-item{
+	 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+	
+}
+.category .hover-item-category i::before {
+  color: #fff;
+  border-radius: 0px;
+	position: absolute;
+  
+}
+
+@media (max-width: 580px) {
+  .category section.section-category h1 {
+    margin-bottom: 5px;
+    font-size: 30px;
+  }
+  .category section.section-category h2 {
+    font-size: 20px;
+    margin: auto;
+    width: 100%;
+    left: 0;
+    text-align: center;
+  }
+  .category .section-category .seemore {
+    margin: auto;
+    left: 0;
+    right: 0;
+  }
+  .category p.small {
+    margin-bottom: 25px;
+  }
+}
+
+.category .item-by-category {
+  border-radius: 00px;
+}
+
+.category .item-by-category *, .category .item-by-category ::before, .category .item-by-category ::after {
+  border-radius: 00px;
+}
+
+{%- endstyle -%}
+
+  <section class=" section-{{ section.id }}-padding section-{{ section.id }} my-section category d-flex justify-content-center flex-wrap">
+ 	  
+    <div class="container-fluid page-width">
+ 
+      <div class="section-title row pl-4 justify-content-left">
+        <h1 class="page-width"> {{section.settings.title-section }} </h1>
+      </div>  
+      <div class=" page-width justify-content-center row section-category ">
+       		
+       
+        <div class="owl-carousel owl-theme owl-shop-category p-0 m-0">
+					{% for block in section.blocks %}
+                  		{% if block.type == "category" %}
+                  		<div class="container-item">
+                          <a href="{{block.settings.collection.url}}" class="item-by-category">
+                             
+                                  <div  class="hover-item-category d-flex flex-column justify-content-center">
+									
+                                      <i class="fa fa-plus"></i>
+                                      <h3>View More </h3>
+                                  
+                                  </div>
+                                
+                              
+                              <div
+                                  class="item-category-1 d-flex justify-content-center align-items-center bo-rad-10 hov-img-zoom position-relative m-t-30 feature-row__image-wrapper">
+                                  <img class="img-1" src="{{block.settings.collection.image | img_url : "master" }}" alt="IMG">
+                                  <h2>{{block.settings.collection.title }}</h2>
+	
+                              </div>
+
+                          </a>
+          				</div>
+                  		 {% endif %}
+                  	  {% endfor %}
+     
+                </div>
+              <div class="row justify-content-center mt-5">
+                <a href="{{section.settings.button_link}}" class="btn-3d btn btn-secondary">
+                	{{section.settings.button_label}}
+                </a>
+              </div>
+            </div>
+  
+
+
+    </div>
+
+
+</section>
+{% javascript %}
+	$('.section-category .owl-carousel').owlCarousel({
+                loop: true,
+                dots: true,
+                margin: 30,
+                items: 1,
+				autoplay: false,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: true,
+                responsive: {
+                    600: {
+                        items: 2
+                    },
+                    930: {
+                        items: 3
+                    }
+                }
+            })
+{% endjavascript %}
+{% schema %}
+{
+  "name": "Custom Categories",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Custom Categories"
+    },
+    {
+        "id": "background-color",
+        "type": "color",
+        "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+	{
+		"type":"text",
+		"id": "title-section",
+		"label": "Title",
+ 		"default": "Categories"
+	},
+{
+      "type": "header",
+      "content": "Button"
+    },
+
+                {
+                    "type": "text",
+                    "id": "button_label",
+                    "default": "Button label",
+                    "label": "Button text"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "Button_link"
+                }
+  ],
+  "blocks":[
+	{
+	
+		"type": "category",
+		"name": "Category",
+		"settings": [
+          {
+
+              "type": "collection",
+              "id": "collection",
+			  "label": "select a collection"
+          }
+		]
+	}
+   ],
+  "presets": [
+    {
+      "name": "Custom Categories"
+    }
+  ]
+}
+{% endschema %}

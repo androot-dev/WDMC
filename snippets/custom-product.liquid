@@ -1,0 +1,65 @@
+
+
+
+<div id="product-{{product.id}}" onclick="requestClickForCarousels('{{product.url}}')" class="card nav-link custom-product card position-relative">
+  
+  {% if product.compare_at_price > product.price and product.available %}
+  	<div class="sale">SALE</div>
+  {% endif %}
+    <img draggable="false"  class="card-img-top" src="{{product.images.first | img_url : "master" }}" width="400" height="350" alt="{{product.title}}">
+    
+  {% if product.compare_at_price > product.price and product.available %}
+    <div class="tag-price-comparation">
+      <span class="price-1">{{product.price | money}}</span>
+      <span class="price-2">{{product.compare_at_price | money }}</span>
+  	</div>
+  {% else %}
+  
+  <div class="tag-price">
+  	{{product.price | money}}
+  </div>
+  {% endif %}
+  
+    <div class="card-footer d-flex justify-content-between">
+      <div class="name-product">{{product.title}}</div>
+      <a href="{{routes.cart_add_url}}?id={{ product.variants.first.id }}&quantity=1" role="button" class="btn-primary-small"><i class="bx bx-tada-hover bx-cart"></i></a>
+    </div>
+    <p class="d-none description">{{product.description | strip_html}}</p>
+    <style>
+      
+        #product-{{product.id}} {
+            width: 100%;
+          	
+        }   
+     
+      #product-{{product.id}} .card-img-top{
+      
+      		object-fit:cover;
+            object-position:center;
+      }
+        {% if height %}
+            #product-{{product.id}} {
+                height: {{height}}px;     
+            }
+            #product-{{product.id}} .card-img-top {
+                min-height: calc({{height}}px - 40px);
+                max-height: calc({{height}}px - 40px);
+            }         
+            {% else %}
+            #product-{{product.id}} {
+                height: 300px;     
+            }
+            #product-{{product.id}} .card-img-top {
+                min-height: 260px;
+                max-height: 260px;
+              
+              	
+            } 
+        {% endif %}
+        
+      
+      
+        </style>
+</div>
+
+

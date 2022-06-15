@@ -1,0 +1,703 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+  padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+}
+.section-{{ section.id }} {
+ 
+  height:auto;
+}
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+
+.testimonials::before{
+	content:"";
+	position:absolute;
+	width:100%;
+	height: 100%;
+	background: {{ section.settings.background-color }};
+	top:0;
+left:0;
+
+}
+.testimonials {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: url("{{section.settings.image_background | img_url : "master"}}");
+  background-size:cover;
+  background-position:center;
+}
+
+.testimonials h1 {
+  color: white;
+  font-size: 4rem;
+  padding-bottom: 500px;
+}
+
+.testimonials p {
+  color: white;
+  font-weight: 300;
+  line-height: 24px;
+}
+
+.testimonials .btn {
+  border-radius: 0px;
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 2rem;
+  margin-left: 10%;
+}
+
+
+@media (max-width: 767px) {
+  .testimonials .btn {
+    margin-left: 0;
+  }
+}
+
+.testimonials::after {
+  content: none;
+}
+
+.testimonials .section-title {
+  padding: 0 0 40px 0;
+	margin: 0;
+}
+.testimonials .btn-default{
+	margin-top: 40px;
+}
+
+.testimonials .section-title::before {
+  content: none;
+}
+
+.testimonials .section-title h1 {
+  font-size: 3rem !important;
+  font-weight: 700;
+ color:white;
+}
+
+.testimonials {
+  padding: 1%;
+}
+
+.testimonials .playBtn {
+  opacity: 0.8;
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+  position: absolute;
+  width: 60px;
+  height: 70px;
+  background-image: url("{{ "playBtn.png" | asset_url }}");
+  background-size: contain;
+  background-repeat: no-repeat;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  background-position: center;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  z-index: 4;
+}
+
+.testimonials .playBtn:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+}
+
+.testimonials .tag {
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.testimonials .fa-heart {
+  color: rgba(255, 230, 0, 0.959);
+  font-size: 30px;
+}
+
+.testimonials .card {
+  height: 100%;
+  border: none;
+  color: black;
+}
+
+.testimonials .testimonial {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 500;
+}
+
+.testimonials .active-star {
+  color: #fbc02d;
+  margin-bottom: 8px;
+}
+
+.testimonials .active-star:hover {
+  color: #f9a825;
+  cursor: pointer;
+}
+
+.testimonials .profile {
+  padding-top: 10px;
+}
+
+.testimonials #name_card {
+  font-weight: 700;
+}
+
+.testimonials .designation {
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.testimonials .owl-carousel .text-card img {
+  width: 100px;
+  height: 100px;
+  border: dashed 3px var(--secondary);
+
+  margin-right: 10px;
+}
+.item-test .text-card .name{
+	font-size: 2rem;
+font-weight: 700;
+}
+
+.testimonials .owl-theme .owl-nav [class*="owl-"] {
+  border-radius: 50% !important;
+  background: inherit !important;
+  border: 3px solid #bbb;
+  color: #bbb !important;
+}
+
+.testimonials .owl-theme .owl-nav [class*="owl-"]:hover {
+  border: 3px solid #1010ca;
+  color: #1010ca !important;
+}
+
+@media (max-width: 768px) {
+  .testimonials {
+    padding: 4%;
+  }
+}
+
+
+
+.testimonials .grid-container {
+  width: 100%;
+  min-width: 250px;
+  height: 350px;
+}
+
+@media screen and (max-width: 910px) {
+  .testimonials .grid-container {
+    padding-left: 10%;
+  }
+}
+
+@media (max-width: 767px) {
+  .testimonials .grid-container {
+    padding: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .testimonials .grid-container {
+    margin-bottom: 50px;
+  }
+}
+
+.testimonials .owl-carousel .owl-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: end;
+}
+
+@media (max-width: 767px) {
+  .testimonials .owl-carousel .owl-item {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.testimonials .owl-carousel .owl-dots {
+	position: absolute;
+    -webkit-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    /* left: 100%; */
+    right: -20px;
+}
+
+
+.item-test .card-header a {
+    font-size: 14px;
+    font-weight: 600;
+    color: gray;
+}
+.item-test .card-header a:hover{
+	color:var(--primary);
+}
+
+@media (max-width: 767px) {
+  .testimonials .owl-carousel .owl-dots {
+    left: auto;
+    bottom: -13%;
+	right: auto;
+    -webkit-transform: none;
+            transform: none;
+  }
+}
+
+.testimonials .owl-carousel .item-test {
+  border-radius:0px;
+  width: 100%;
+  min-width: 250px;
+  height: 350px;
+  position: relative;
+  padding-right: 40px;
+}
+.item-test .text-card .card-header{
+	background: none;
+}
+@media (max-width: 576px) {
+	.item-test .text-card img{
+		width: 75px;
+		height: 75px;
+	}
+.item-test .text-card .card-header h4{
+	text-align:left;
+}
+	.item-test .text-card .card-header{
+		line-height: 1;
+	}
+	
+	.item-test .card-header .fa-star {
+
+		font-size: 13px;
+	}
+}
+@media (max-width: 767px) {
+  .testimonials .owl-carousel .item-test {
+    padding-right: 0;
+  }
+}
+
+.testimonials .owl-carousel .item-test .video-container .name {
+  background: -webkit-gradient(linear, left top, right top, from(rgba(253, 29, 29, 0)), color-stop(20%, rgba(218, 71, 66, 0)), color-stop(71%, var(--secondary-dark)), to(var(--secondary-dark)));
+  background: linear-gradient(90deg, rgba(253, 29, 29, 0) 0%, rgba(218, 71, 66, 0) 20%, var(--secondary-dark) 71%, var(--secondary-dark) 100%);
+  font-family: var(--font-heading-family);
+  color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  position: absolute;
+  right: 0px;
+  bottom: 0;
+  font-size: 2.5rem;
+  width: 100%;
+  padding: 5px;
+  border-radius: 0px;
+  font-weight: 700;
+  right: -40px;
+  padding-right: 20px;
+}
+
+@media (max-width: 767px) {
+  .testimonials .owl-carousel .item-test .name {
+    right: 0 !important;
+  }
+}
+
+.testimonials .owl-carousel .item-test .video-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.testimonials .owl-carousel .item-test > .video-container, .testimonials .owl-carousel .item-test .text-card {
+  width: 100%;
+  height: 100%;
+}
+
+.testimonials .owl-carousel .item-test > .video-container .playBtn, .testimonials .owl-carousel .item-test > .video-container .name, .testimonials .owl-carousel .item-test .text-card .playBtn {
+  position: absolute;
+}
+
+.testimonials .owl-carousel .item-test > .video-container video, .testimonials .owl-carousel .item-test > .video-container .card, .testimonials .owl-carousel .item-test .text-card video, .testimonials .owl-carousel .item-test .text-card .card {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 0px;
+  height: 100%;
+}
+.item-test .text-card .card{
+	    background: linear-gradient(90deg, rgb(209 206 206) 0%, rgb(240 239 239) 20%, rgba(246,246,246,1) 71%, rgba(247,247,247,1) 100%);
+}
+.item-test .text-card .card .font-weight-bold{
+	color: var(--secondary);
+}
+.testimonials .owl-carousel .item-test > .video-container .card, .testimonials .owl-carousel .item-test .text-card .card {
+  padding: 10px 20px;
+}
+
+.text-testimonial-p{
+	color:black !important;
+	font-size: 1.6rem !important;
+}
+
+
+
+
+.overflow-auto::-webkit-scrollbar {
+  width: 6.5px !important;
+  height: 6.5px !important;
+  margin-left: -19px !important;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+  background: var(--secondary) !important;
+  border-radius: 0px !important;
+  margin-left: -9px !important;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-light) !important;
+  -webkit-box-shadow: 0 0 2px 1px rgba(56, 56, 56, 0) !important;
+          box-shadow: 0 0 2px 1px rgba(56, 56, 56, 0) !important;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb:active {
+  background-color: var(--secondary) !important;
+}
+{%- endstyle -%}
+
+<section class="testimonials my-section container-fluid section-{{ section.id }}-padding section-{{ section.id }}">
+    <div class="row internal-square page-width">
+        <div class="col-12 col-md-6 m-0 p-0 d-flex justify-content-center">
+            <div class="h-100 d-flex align-items-start justify-content-center flex-column">
+             	      <h1 class="section-title">{{section.settings.title-section}}</h1>
+                <p class=" pr-sm-5 pr-0">
+                    {{section.settings.description | strip_html}}
+                </p>
+                {% if section.settings.button_link and section.settings.button_link %}
+              	<div class="row w-100 justify-content-start d-none d-md-flex">
+                  <a role="button" href="{{section.settings.button_link}}" class=" btn-default btn-3d btn">
+                      {{section.settings.button_label}}
+                  </a>
+              	</div>
+            {% endif %} 
+              
+          </div>
+       
+        </div>
+
+        <div class="col-12 col-md-6 m-0 p-0 d-flex flex-wrap justify-content-md-end justify-content-center">
+            <div class="grid-container">
+                <div class="owl-carousel owl-theme d-flex align-items-center justify-content-center">
+                  {% for block in section.blocks %} 
+                  {% if block.type == "video-testimonial" %}
+
+                    <div class="item-test">
+                        <div class="video-container position-relative">
+                            <div class="name">{{block.settings.name}}</div>
+                            <video class="video-testimonial" src="{{block.settings.video-url}}"></video>
+                            <button class="playBtn"></button>
+                        </div>
+                    </div>
+               
+                  {% endif %} 
+                  {% if block.type == "text-testimonial" %}
+                    <div class="item-test">                      
+                          <div class="text-card position-relative">
+                              <div class="p-3 card d-flex flex-column">
+                                  <div class="card-header d-flex">
+
+                                       {% if block.settings.image %}
+                                       <img src="{{block.settings.image | img_url  }}" alt="" width="100" height="100" class="rounded-circle" />
+                                      {% endif %}
+                                      <div class="content-header d-flex flex-column">
+                                          <h4 class="name">{{block.settings.name}}</h4>
+                                        <a href="{{ block.settings.link }}" target="_blank">View in <i class="{{block.settings.icon-social}}"></i></a>
+                                          <div class="mt-2" bis_skin_checked="1">
+
+                                               {% for i in (1..block.settings.stars) %}
+                                                    <span class="fas fa-star active-star"></span>
+                                               {% endfor %}
+
+                                          </div>
+                                      </div>
+
+                                  </div>
+                                <div class="d-flex flex-column overflow-auto p-4">
+                                  <h2 class="main font-weight-bold pb-2 pt-1">{{block.settings.header}}</h2>
+                                  <p class="text-testimonial-p testimonial"><i class="fa fa-quote-left"></i> {{block.settings.testimonial | strip_html }}<i class="fa fa-quote-right"></i></p>
+                                </div>
+                              </div>
+                           </div>
+                   </div>
+                    {% endif %}
+                      {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% if section.settings.button_link and section.settings.button_link %}
+         	<div class="d-flex d-md-none col-12 d-flex justify-content-center">
+  			<a role="button" href="{{section.settings.button_link}}" class=" btn-default btn-3d btn">
+                {{section.settings.button_label}}
+            </a>
+      		</div>
+  		{% endif %}
+    </div>
+
+</section>
+{% javascript %}
+
+$(document).ready(function(){
+
+	 $('.testimonials .owl-carousel').owlCarousel({
+                loop: true,
+                items: 1,
+                margin: 50
+       });
+            let playButtons = document.querySelectorAll(".playBtn");
+
+            playButtons.forEach(element => {
+                let videoElem = element.parentNode.querySelector(".video-testimonial");
+                let name = videoElem.parentNode.querySelector(".name");
+
+                element.addEventListener("click", () => {
+                    handlePlayButton(element, videoElem, name);
+                }, false);
+                videoElem.onended = () => {
+                    element.style.display = "block";
+                    name.style.display = "flex";
+                    videoElem.controls = false;
+                    $(".testimonials .owl-carousel").trigger('next.owl.carousel');
+                }
+                playVideo(element, videoElem, name);
+            });
+
+
+            async function playVideo(playButton, videoElem, name) {
+                try {
+                    await videoElem.play();
+                    playButton.style.display = "none";
+                    name.style.display = "none";
+                } catch (err) {
+
+                    playButton.style.display = "block";
+                    name.style.display = "flex";
+                }
+
+            }
+
+            function handlePlayButton(playButton, videoElem, name) {
+
+                videoElem.controls = true;
+                if (videoElem.paused) {
+                    playVideo(playButton, videoElem, name);
+
+                } else {
+                    videoElem.pause();
+                    playButton.style.display = "block";
+                    name.style.display = "flex";
+                }
+            }
+
+ })
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Custom Testimonials",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+  	{
+		"type": "image_picker",
+		"id": "image_background",
+		"label": "bakcground image"
+	},
+	{
+	
+      "type": "header",
+      "content": "Custom Colors"
+    },
+    {
+        "id": "background-color",
+        "type": "color_background",
+        "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+	{
+		"type": "text",
+		"id": "title-section",
+		"label": "Title"
+	},
+	{
+		"type": "textarea",
+		"id": "description",
+		"label": "Description"
+	},
+                  {
+      "type": "header",
+      "content": "Button"
+    },
+
+                {
+                    "type": "text",
+                    "id": "button_label",
+                    "default": "Button label",
+                    "label": "Button text"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "Button_link"
+                }
+
+  ],
+	"blocks":[
+	{
+		"type": "video-testimonial",
+		"name": "Video Testimonial",
+		"settings":[
+			{
+				"type": "url",
+				"label": "Video Url",
+				"id": "video-url"
+			},
+			{
+				"type": "text",
+                "id": "name",
+                "label": "Name"
+			}
+		]
+	},
+	{
+		"type": "text-testimonial",
+		"name": "Text Testimonial",
+		"settings":[
+            {
+                  "type": "range",
+                   "label": "stars",
+                  "min": 1,
+                  "max": 5,
+                  "step": 1,
+                  "id":"stars",
+                  "default": 5
+            },
+			{
+				"type": "image_picker",
+				"label": "Select a photo",
+				"id": "image"
+			},
+            {
+				"type": "text",
+                "id": "header",
+                "label": "Card header"
+			},
+			{
+				"type": "text",
+                "id": "name",
+                "label": "Name"
+			},
+			{
+				"type": "url",
+                "id": "link",
+                "label": "link to social network"
+			},
+			{
+				"type": "text",
+                "id": "icon-social",
+                "label": "icon for social network"
+			},
+			{
+				"type": "textarea",
+                "id": "testimonial",
+                "label": "write a testimonial"
+			}
+		]
+	}
+	],
+  "presets": [
+    {
+      "name": "Custom Testimonials"
+    }
+  ]
+}
+{% endschema %}

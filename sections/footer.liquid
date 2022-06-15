@@ -1,0 +1,470 @@
+{% comment %}theme-check-disable UndefinedObject{% endcomment %}
+{{ 'section-footer.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-newsletter.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-list-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-list-payment.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-list-social.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'component-rte.css' | asset_url }}" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="{{ 'disclosure.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<noscript>{{ 'component-newsletter.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-list-menu.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-list-payment.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-list-social.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
+<noscript>{{ 'disclosure.css' | asset_url | stylesheet_tag }}</noscript>
+
+{%- style -%}
+
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+	margin-top: {{ section.settings.margin_top | times: 0.75 | round: 0 }}px;
+	border-radius: {{ section.settings.radius_border }}px {{ section.settings.radius_border }}px 0 0;
+  }
+
+  @media screen and (min-width: 750px) {
+
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top }}px;
+	  margin-top: {{ section.settings.margin_top }}px;  
+    }
+  }
+
+.bg-footer {
+  background: {{ section.settings.background_color }};
+}
+
+@media (max-width: 767px) {
+  footer li {
+    text-align: center;
+  }
+}
+
+.my-logo {
+  background-image: url({{section.settings.logo | img_url: "master"}}) !important;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+footer li a span{
+	
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    color: inherit;
+}
+footer a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  -webkit-transition: color 0.15s linear;
+  transition: color 0.15s linear;
+  
+}
+
+footer .copyright {
+  background-color: #280203;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 15px;
+}
+
+footer .copyright span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: white;
+  font-size: 1.4rem;
+}
+
+@media (max-width: 576px) {
+  footer .copyright span {
+    text-align: center;
+    padding: 5px;
+  }
+}
+
+@media (max-width: 576px) {
+  footer .copyright {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+}
+
+footer h2 {
+  font-family: "Poppins-Bold";
+  font-size: 2.5rem;
+  color: var(--primary);
+}
+
+@media (max-width: 767px) {
+	.container-menu-footer{
+		width: 280px !important;
+	}
+	
+   
+}
+
+footer i {
+  font-size: 1rem;
+  margin-right: 8px;
+}
+
+footer li a {
+  font-size: 1.8rem;
+font-family: var(--font-body-family);
+}
+.container-menu-footer{
+	width: auto;
+}
+.container-more-footer li{
+	line-height:20px;
+	margin-top: 10px;
+}
+.container-more-footer ul {
+  list-style: none;
+}
+
+.container-more-footer ul i {
+  font-size: 1em;
+align-self:flex-start;
+}
+
+.container-quick-links ul {
+  list-style: none;
+}
+
+.container-quick-links ul li {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+footer .my-logo{
+	margin-right: 20px;
+}
+footer .my-logo {
+  width: {{section.settings.logo_width}}px;
+  height: {{section.settings.logo_height}}px;
+}
+.container-menu-footer {
+    padding-left: 16% ;
+}
+@media (max-width: 767px) {
+	.container-menu-footer {
+   	 padding-left: 0 ;
+	}
+}
+@media (max-width: 767px) {
+  footer .my-logo {
+    width: {{section.settings.logo_mobile_width}}px;
+    height: {{section.settings.logo_mobile_height}}px;
+  }
+}
+.padding-bottom-footer{
+  padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+}
+@media screen and (min-width: 750px) {
+  .padding-bottom-footer{
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+ .container-more-footer .container-menu-footer{
+	width: min-content;
+}
+.container-more-footer .container-menu-footer span{
+	display: flex;
+}
+@media (max-width: 767px) {
+	.container-more-footer .container-menu-footer span{
+	display: inline-block;
+} 
+}
+{%- endstyle -%}
+
+<footer class="footer section-{{ section.id }} px-0 mx-0 my-section container-fluid d-flex flex-wrap bg-footer text-white">
+  <div class="page-width  row w-100 padding-bottom-footer">
+	
+    	{% if section.settings.logo %}
+      <div  data-aos="fade-up" class="col-md-4 order-1 col-12 f-center">
+          <div class="row justify-content-center">
+              <div class="my-logo"> </div>
+          </div>
+          
+          <div class="row justify-content-center">
+            {% for block in section.blocks %}
+              {% if block.type == "social_links" %}
+              <a class="px-2" href="{{block.settings.url}}" target="_blank">
+                  <i class="fa fas {{block.settings.icon}}"></i>
+              </a>
+            {% endif %}
+          {% endfor %}
+          </div>
+
+      </div>
+    {% endif %}
+    
+    
+    
+    
+     <div data-aos-delay="100" data-aos="fade-up" class="col-md-4  order-md-2 order-3 col-12 container-more-footer pt-3 d-flex justify-content-center">
+          <div class="container-menu-footer">
+              <h2 class="text-md-left text-center">More Information</h2>
+              <ul>
+                {% for block in section.blocks %}
+                  {% if block.type == 'more_information' %}
+                  <li class="d-flex pr-md-5 pt-3 justify-content-center justify-content-md-start  align-items-center">
+                    
+                    <a {% if block.settings.new_tab %} target="_blank" {% endif %} href="{{ block.settings.url }}">
+                     <span> <i class="fas fa {{ block.settings.icon }}"></i>{{ block.settings.label }}</span>
+                    </a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+              </ul>
+          </div>
+      </div>
+
+ 
+	
+    
+         {% for block in section.blocks %}
+        {% if block.type == 'quick_links' %}
+      <div data-aos-delay="150" data-aos="fade-up" class="col-md-4 col-12 order-2 container-quick-links d-flex justify-content-md-end justify-content-center">
+          <div class="container-menu-footer pt-3 page-width p-0 ">
+              <h2 class="text-md-left text-center">{{block.settings.heading}}</h2>
+              <ul class="quick-links list" id="quick-links">
+                
+              {% for link in linklists[block.settings.menu].links %}
+                    <li class="d-flex pr-md-5 pt-3 justify-content-center justify-content-md-start  align-items-center">
+                        <a href="{{link.url}}">{{link.title}}</a>
+                    </li>
+              {% endfor %}
+            </ul>
+          </div>
+      </div>
+        {% endif %}
+      {% endfor %}
+     
+
+  </div>
+  <div class="copyright row m-0 justify-content-around align-items-center ">
+      <span>Copyright © 2022 All rights reserved | This Website Was Designed And Developed by</span>
+      <a href="https://josesilvera.com/" target="_blank"> <img class="logoSilvera" alt="author page logo"
+              src="{{ "silvera.png" | asset_url }}"></a>
+  </div>
+</footer>
+
+{% schema %}
+{
+	"name": "t:sections.footer.name",
+	"blocks": [{
+			"type": "quick_links",
+			"name": "Quick Links",
+			"limit": 1,
+			"settings": [{
+					"type": "text",
+					"id": "heading",
+					"default": "Quick links",
+					"label": "t:sections.footer.blocks.link_list.settings.heading.label",
+					"info": "t:sections.footer.blocks.link_list.settings.heading.info"
+				},
+				{
+					"type": "link_list",
+					"id": "menu",
+					"default": "footer",
+					"label": "t:sections.footer.blocks.link_list.settings.menu.label",
+					"info": "t:sections.footer.blocks.link_list.settings.menu.info"
+				}
+			]
+		},
+		{
+			"type": "more_information",
+			"name": "More Information",
+			"limit": 4,
+			"settings": [{
+					"type": "url",
+					"id": "url",
+					"label": "Link"
+				},
+				{
+					"type": "text",
+					"id": "label",
+					"label": "label"
+				},
+				{
+					"type": "text",
+					"id": "icon",
+					"label": " Font Awesome Icon"
+				},
+        {
+          "type": "checkbox",
+          "id": "new_tab",
+          "label": "Open in new tab",
+          "default": true
+        }
+			]
+		},
+		{
+			"type": "social_links",
+			"name": "Social Links",
+			"limit": 5,
+			"settings": [{
+					"type": "text",
+					"id": "icon",
+					"label": " Font Awesome Icon"
+				},
+				{
+					"type": "url",
+					"id": "url",
+					"label": "Link"
+				}
+			]
+		}
+	],
+	"settings": [{
+			"type": "image_picker",
+			"id": "logo",
+			"label": "select your logo"
+
+		},
+		{
+			"type": "color_background",
+			"id": "background_color",
+			"label": "Background Footer",
+			"default": "linear-gradient(89.71deg, #383838 23.22%, #575757 92.95%)"
+		},
+		{
+			"type": "range",
+			"id": "radius_border",
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"label": "Border Radius",
+			"default": 64
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.spacing"
+		},
+		{
+			"type": "range",
+			"id": "margin_top",
+			"min": 0,
+			"max": 100,
+			"step": 4,
+			"unit": "px",
+			"label": "t:sections.footer.settings.margin_top.label",
+			"default": 0
+		},
+		{
+			"type": "header",
+			"content": "t:sections.all.padding.section_padding_heading"
+		},
+		{
+			"type": "range",
+			"id": "padding_top",
+			"min": 0,
+			"max": 100,
+			"step": 4,
+			"unit": "px",
+			"label": "t:sections.all.padding.padding_top",
+			"default": 36
+		},
+		{
+			"type": "range",
+			"id": "padding_bottom",
+			"min": 0,
+			"max": 100,
+			"step": 4,
+			"unit": "px",
+			"label": "t:sections.all.padding.padding_bottom",
+			"default": 36
+		},
+		{
+			"type": "header",
+			"content": "Logo Size"
+		},
+		{
+			"type": "range",
+			"id": "logo_width",
+			"min": 50,
+			"max": 250,
+			"step": 10,
+			"default": 100,
+			"unit": "t:sections.header.settings.logo_width.unit",
+			"label": "Logo Width"
+		},
+		{
+			"type": "range",
+			"id": "logo_height",
+			"min": 50,
+			"max": 250,
+			"step": 10,
+			"default": 100,
+			"unit": "t:sections.header.settings.logo_width.unit",
+			"label": "Logo Height"
+		},
+		{
+			"type": "header",
+			"content": "Logo Size Mobile"
+		},
+		{
+			"type": "range",
+			"id": "logo_mobile_width",
+			"min": 50,
+			"max": 250,
+			"step": 10,
+			"default": 100,
+			"unit": "t:sections.header.settings.logo_width.unit",
+			"label": "Logo mobile Width"
+		},
+		{
+			"type": "range",
+			"id": "logo_mobile_height",
+			"min": 50,
+			"max": 250,
+			"step": 10,
+			"default": 100,
+			"unit": "t:sections.header.settings.logo_width.unit",
+			"label": "Logo mobile Height"
+		}
+	]
+}
+{% endschema %}

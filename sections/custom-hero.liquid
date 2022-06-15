@@ -1,0 +1,281 @@
+{%- style -%}
+
+.section-{{ section.id }} {
+  background: {{ section.settings.background-color }};
+  z-index: 1;
+}
+
+.hero {
+  width: 100%;
+}
+
+.hero .banner-text {
+  width: 100%;
+  position: absolute;
+ margin-top: calc(-20px - 2.5rem - 10px);
+
+
+}
+
+.hero .banner-text h1 {
+  color: white;
+  font-size:  5.5rem;
+}
+
+.hero .banner-text .title-line-2 {
+  margin-left: 20%;
+}
+
+.hero .banner-text .underline-gradient {
+
+  height: 20px;
+  width: 50%;
+  background: -webkit-gradient(linear, left top, right top, color-stop(-1.95%, var(--primary-dark)), color-stop(108.75%, rgba(205, 155, 40, 0)));
+  background: linear-gradient(90deg, var(--primary-dark) -1.95%, rgba(205, 155, 40, 0) 108.75%);
+  position: absolute;
+  left: 0;
+}
+.hero .banner-text .underline-gradient .subtitle{
+	
+    color: white;
+    font-size: 2.5rem;
+    font-family: var(--font-heading-family);
+    margin-top: 15px;
+    padding-left: 45%;
+
+}
+
+@media (max-width: 767px) {
+.hero .banner-text .underline-gradient{
+	width: 70%;
+}
+  .hero .banner-text h1 {
+    font-size:  5.5rem;
+  }
+}
+
+@media (max-width: 575px) {
+.hero .banner-text .underline-gradient .subtitle{
+	margin-left:0;
+	padding: 0;
+	width: 100%;
+	text-align:center;
+}
+.hero .banner-text .underline-gradient {
+	width: 100%;
+}
+  .hero .banner-text {
+    margin-top: -20%;
+  }
+  .hero .banner-text .title-line-2 {
+    margin-left: 0;
+  }
+  .hero .banner-text h1 {
+    font-size: 5.5rem;
+    padding: 0 10px;
+  }
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+
+.hero video {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  -o-object-position: center;
+     object-position: center;
+  z-index: 1;
+}
+
+.hero .hero-content {
+  z-index: 10;
+  width: 100%;
+}
+
+@media (max-width: 575px) {
+  .hero .hero-content .container-square {
+    margin-left: 0;
+  }
+}
+
+
+
+.hero .hero-content .container-button {
+  width: 50%;
+  right:0;
+  position: absolute;
+  z-index: 2;
+  display:flex;
+	
+}
+
+.hero .hero-content .container-button-phone{
+	width: 50%;
+    right: 0;
+    position: absolute;
+    z-index: 2;
+    padding-top: 100px;
+    margin-bottom: -100px;
+	display:none;
+}
+
+@media screen and (max-width: 930px){
+	.hero .hero-content .container-button-phone{
+		display: flex;
+		width: 100% !important;
+	}
+	.hero .hero-content .container-button{
+		display:none;
+	}
+}
+
+
+
+.hero .hero-content.container-button .action-btn {
+  padding: 10px 15px;
+  font-size: 2rem;
+  font-weight: 700;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 0;
+  border-radius: 0px;
+}
+
+.hero-expanded {
+  height: 100vh;
+}
+
+.hero-compressed {
+  height: 50vh;
+}
+
+{%- endstyle -%}
+  
+
+{% schema %}
+{
+    "name": "Custom Principal Hero",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Section Settings"
+        },  
+        {
+            "id": "video-hero",
+            "type": "url",
+            "label": "Video Hero"
+        },
+        {
+            "id": "line-title-1",
+            "type": "text",
+            "label": "Line Title 1",
+            "default": "-"
+        },
+        {
+            "id": "line-title-2",
+            "type": "text",
+            "label": "Line Title 2",
+            "default": "-"
+        },
+		 {
+            "id": "small-subtitle",
+            "type": "text",
+            "label": "Small Subtitle",
+            "default": "Only give the best"
+        },
+        {
+            "type": "header",
+            "content": "Default Settings"
+        },
+        {
+            "id": "background-color",
+            "type": "color_background",
+            "label": "Background Color"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "button",
+            "name": "button",
+            "limit": 1,
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "button_label",
+                    "default": "Button label",
+                    "label": "Button text"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "Button_link"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Custom Principal Hero"
+        }
+    ]
+}
+{% endschema %}
+
+ <section class="position-relative hero hero-expanded f-center my-section hero section-{{ section.id }}-padding section-{{ section.id }}">
+
+        <video autoplay="autoplay" loop="loop" muted playsinline="playsinline"
+            src="{{ section.settings.video-hero }}"></video>
+
+        <div class="page-width hero-content f-center position-relative bg-danger">
+            <div class="banner-text">
+                <h1 class="title-line-1 page-width">{{ section.settings.line-title-1 }}</h1>
+                <h1 class="title-line-2">
+                   {{ section.settings.line-title-2}}
+                </h1>
+                <div class="underline-gradient">
+              
+                  <div class="subtitle">{{section.settings.small-subtitle}} </div>
+              		
+              </div>
+              
+              {% for block in section.blocks %}
+                {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                  
+                  
+              		<div class="container-button-phone position-static justify-content-center">
+                    	<a href="{{ block.settings.button_link }}" role="button" class="btn btn-secondary btn-3d action-btn"> {{ block.settings.button_label }}</a>
+                	</div>
+                    
+            	  {% endif %}
+            	{% endfor %}
+            </div>
+            
+             {% for block in section.blocks %}
+                {% if block.settings.button_label != blank and block.settings.button_link != blank %}
+                  
+                  
+              		<div class="container-button position-absolute justify-content-center">
+                    	<a href="{{ block.settings.button_link }}" role="button" class="btn btn-secondary btn-3d action-btn"> {{ block.settings.button_label }}</a>
+                	</div>
+                    
+            	  {% endif %}
+            	{% endfor %}
+                
+        </div>
+
+    </section>

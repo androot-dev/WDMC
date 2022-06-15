@@ -1,0 +1,278 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+  padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.background-color }};
+  height:auto;
+}
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+
+.about {
+  position: relative;
+}
+
+@media (max-width: 575px) {
+  .about .overlay-about {
+  	padding: 10px !important;
+	min-width: 230px !important;
+  }
+	
+}
+
+.about .container-image {
+  height: auto;
+  z-index: 1;
+}
+.about .overlay-about .btn-secondary{
+	z-index: 2;
+}
+.about .image {
+  background-size: cover;
+  background-position: 90%;
+  background-repeat: no-repeat;
+  border-radius: 0px;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  left: 0;
+  display: flex;
+  min-height: {{section.settings.height-section}}px;
+  justify-content: flex-start;
+	padding: 2%;
+}
+
+
+.about .image img {
+  border-radius: 0px;
+  width: 100%;
+  height: 100%;
+  -o-object-position: 0 -80px;
+     object-position: 0 -80px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.about .overlay-about {
+ 
+    background-color: rgb(0 0 0 / 54%);
+    height: calc(100% + 100px);
+    width: 50%;
+    max-width: 500px;
+    min-width: 350px;
+    border-radius: 0px;
+    padding: 20px 35px;
+    color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: start;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    margin-top: -50px;
+    justify-content: center;
+ 	margin-left: 60px
+}
+.my-page-width {
+    max-width: calc(var(--page-width));
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+@media (max-width: 767px) {
+
+}
+@media (max-width: 575px) {
+.about .overlay-about {
+	margin-left: 0;
+	width: 100%;
+	margin-top:0; 
+	width: 100%;
+	height: 100%;
+}
+
+}
+
+
+.about .overlay-about h1 {
+  font-size: 3rem;
+  padding: 3rem 0;
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.about .overlay-about h1::before {
+  display: none;
+}
+
+
+
+.about .overlay-about p {
+  color: white;
+}
+
+.about .overlay-about .btn-secondary {
+  border-radius: 0px;
+  font-weight: 700;
+  
+  font-size: 2rem;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+
+.internal-square-2{
+	    content: "";
+    /* padding: 3%; */
+    width: 95%;
+    height: 90%;
+    border: solid 3px rgba(255,255,255,.37);
+    z-index: 0;
+    border-radius: 0px;
+    top: 5%;
+    left: 2.5%;
+    z-index: -1;
+}
+
+{%- endstyle -%}
+
+  <section class="section-{{ section.id }}-padding section-{{ section.id }} my-section about page-width my-page-width">
+   <div class=" container-fluid">
+                <div class="row">
+                    <div class="m-0 p-0 col-12 position-relative container-image">
+                        <div class="image" style="background-image:url('{{ section.settings.image | img_url : "master" }}') ;">
+                         
+                          <div class="internal-square-2 position-absolute d-sm-flex d-none" ></div>
+                          
+                          <div class="overlay-about d-sm-flex d-none ">
+                                    <h1 class="section-title">{{section.settings.title-section}}</h1>
+                                    <p>
+                                        {{section.settings.description-section}}
+                                    </p>
+                                  {% if section.settings.label and section.settings.link %}
+                                  <div class="w-100 d-flex justify-content-center justify-content-sm-start">
+                                    <a href="{{section.settings.link}}" role="button" class="btn btn-secondary btn-3d">{{section.settings.label}}</a>
+                                  </div>
+                                  {% endif %}
+                           </div>
+                          
+                          <div class="internal-square d-sm-none d-flex ">
+                                <div class="overlay-about ">
+                                    <h1 class="section-title">{{section.settings.title-section}}</h1>
+                                    <p>
+                                        {{section.settings.description-section}}
+                                    </p>
+                                  {% if section.settings.label and section.settings.link %}
+                                  <div class="w-100 d-flex justify-content-center justify-content-sm-start">
+                                    <a href="{{section.settings.link}}" role="button" class="btn btn-secondary btn-3d">{{section.settings.label}}</a>
+                                  </div>
+                                  {% endif %}
+                                </div>
+                          </div>
+                      </div>  
+                    </div>
+                </div>
+            </div>
+  </section>
+
+{% schema %}
+{
+  "name": "Custom About Home",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Custom Colors"
+    },
+    {
+        "id": "background-color",
+        "type": "color",
+        "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+	  {
+      "type": "range",
+      "id": "height-section",
+      "min": 300,
+      "max": 600,
+      "step": 3,
+      "unit": "px",
+      "label": "Height Section",
+      "default": 450
+    },
+	{
+		"type":"text",
+		"id": "title-section",
+		"label": "Title",
+ 		"default": "About Us"
+	},
+	{
+		"type":"richtext",
+		"id": "description-section",
+		"label": "Description"
+	},
+	{
+		"type": "image_picker",
+		"id": "image",
+		"label": "Select a Image"
+	},
+	{
+      "type": "header",
+      "content": "Button"
+    },
+	{
+		"type":"text",
+		"id": "label",
+		"label": "Label"
+	},
+	{
+		"type": "url",
+		"id": "link",
+		"label": "Url"
+	}
+  ],
+  "presets": [
+    {
+      "name": "Custom About Home"
+    }
+  ]
+}
+{% endschema %}

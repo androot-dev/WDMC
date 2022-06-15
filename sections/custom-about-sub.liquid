@@ -1,0 +1,294 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+  padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.background-color }};
+  height:auto;
+}
+.section-{{ section.id }} .section-title h1{
+	 background-color: {{ section.settings.background-color }};
+}
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+
+.ourHistory .information-1 .img-ref img {  
+        object-fit: cover;
+        width: 100%;
+        height: 100%; 
+    }
+  .ourHistory .information-1 .img-ref img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    min-height: 350px;
+  }
+  .ourHistory .subtitle-block{
+		font-weight: 600;
+		color: var(--secondary);
+	}
+  .ourHistory .information-1 .button-read {
+    padding-left: 20%;
+  }
+  @media (max-width: 576px) {
+    .ourHistory .information-1 .button-read {
+      padding-left: 0%;
+    }
+  }
+  .ourHistory .owl-item {
+    max-width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .ourHistory .container-img-carousel {
+    width: 100%;
+    height: 350px !important;
+    max-width: 600px !important;
+   
+    
+    
+  }
+  .ourHistory .owl-item{
+    padding:10px !important;
+  }
+  
+  @media (max-width: 576px) {
+    .ourHistory .container-img-carousel {
+      height: 300px !important;
+    }
+  }
+  .ourHistory .container-img-carousel > img {
+    max-width: 600px;
+  }
+  @media (max-width: 576px) {
+    .ourHistory .container-img-carousel > img {
+      height: 300px !important;
+      min-height: 300px !important;
+    }
+  }
+  
+.overlay-to-white {
+    background: linear-gradient(180deg, rgba(177, 177, 177, 0.123) 0%, rgba(164, 164, 164, 0.521) 33.44%, rgba(238, 238, 238, 0.651) 63.44%, #e7e7e7 80.44%, #ffffff 91.46%);
+}
+
+    
+{% endstyle %}
+
+  <section class="ourHistory section-{{ section.id }}-padding section-{{ section.id }}   p-sm-5 p-2 pb-5 m-0 faq my-section container-fluid position-relative">
+        <div class="container-fluid first-carousel">
+         <div class=" section-title pl-4 justify-content-start">
+       		<h1 class="page-width"> {{section.settings.title-section}} </h1>
+     	</div>
+        <div class="row information-1 align-items-center">
+            <div class="col-md-6 col-12">
+                 {% for block in section.blocks %}
+                    {% if block.type == 'info-block' %} 
+              			{% if block.settings.subtitle-block != blank %}
+              			<h2 class="subtitle-block">
+                          {{ block.settings.subtitle-block }}
+              			</h2>
+              			{%endif %}
+                        {% if block.settings.description-block != blank %}
+              			{{
+                        	block.settings.description-block
+             			 }}
+              			{%endif %}
+              		{% endif %}
+              		
+              
+                 {% endfor %}
+
+                {% for block in section.blocks %}
+                    {% if block.type == 'button_action' %}
+                        <div class="w-sm-75 w-100 button-read justify-content-sm-start justify-content-center  d-none d-md-flex">    
+                            <a class="action-btn mt-5" href="{{ block.settings.link }}">
+                                {{ block.settings.label }}
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div class="col-md-6 col-12 img-ref justify-content-center owl-carousel owl-theme">
+                {% for block in section.blocks %}
+                    {% if block.type == 'carousel' %}
+                        <div class="container-img-carousel">
+                            <img src="{{ block.settings.image | img_url : "master" }}" loading="lazy" />
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            {% for block in section.blocks %}
+                {% if block.type == 'button_action' %}
+                    <div class="col-12 button-read justify-content-center d-flex d-md-none m-0 p-0 ">
+                        <a href="{{ block.settings.link }}" class="action-btn mt-5">
+                            {{ block.settings.label }}
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %} 
+        </div>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"
+    integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous">
+  </script>
+
+
+{% javascript %}
+
+$(document).ready(()=>{
+    
+$(`.first-carousel .owl-carousel`).owlCarousel({
+    loop: true,
+    margin: 10,
+    nav: false,
+    dots: true,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+    items: 1
+    });
+
+    $(`.first-carousel .owl-carousel`).on('translated.owl.carousel', function(event) {
+        dotsActive(`.first-carousel .owl-carousel`, `.nav-dots .circle`);
+    });
+    dotsLink(`.first-carousel .owl-carousel`, ` .nav-dots .circle`);
+
+    function dotsActive(carousel, dots) {
+        let active = $(carousel).find('.active');
+        $(dots).removeClass("selected-circle");
+
+        $(dots + ":nth-child(" + active.index() + ")").addClass("selected-circle");
+    }
+
+    function dotsLink(carousel, dots) {
+        $(dots).on('click', function() {
+            if ($(this).hasClass("selected-circle")) {
+                return;
+            } else {
+                carousel = $(carousel);
+                let index = $(this).index();
+                carousel.trigger('to.owl.carousel', [index - 1, 300]);
+                carousel.trigger('stop.owl.autoplay');
+                carousel.trigger('play.owl.autoplay');
+            }
+        });
+    }
+ 
+})
+
+{% endjavascript %}
+{% schema %}
+{
+  "name": "Custom About Subpage",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+	{
+            "id": "title-section",
+            "type": "text",
+            "label": "Title Section",
+            "default": "OUR HISTORY"
+        },
+	
+    {
+      "type": "header",
+      "content": "Custom Colors"
+    },
+    {
+        "id": "background-color",
+        "type": "color",
+        "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    }
+  ],
+  "blocks":[
+   {
+            "name": "Carousel",
+			"type": "carousel",
+            "settings":[
+                {
+                    "id": "image",
+                    "type": "image_picker",
+                    "label": "Imagen"
+                }
+            ]
+        },
+		{
+			"name": "info block",
+			"type": "info-block"	,
+			"settings": [
+             {
+              "id": "subtitle-block",
+              "type": "text",
+              "label": "Title block",
+              "default": "Subtitle"
+              },
+              {
+                  "id": "description-block",
+                  "type": "richtext",
+                  "label": "Description block"
+              }
+			]
+		},
+        {
+            "name": "button_action",
+            "type": "button_action",
+            "settings":[
+                {
+              
+                    "type": "text",
+                    "label": "Label Button",
+                    "id": "label",
+                    "default": "Read More"
+                },
+                {
+     
+                    "type": "url",
+                    "label": "Link Button",
+                    "id": "link"
+                }
+            ]
+        }
+  
+ ],
+  "presets": [
+    {
+      "name": "Custom About Subpage"
+    }
+  ]
+}
+{% endschema %}

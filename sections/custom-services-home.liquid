@@ -1,0 +1,538 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+  padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.background-color }};
+  height:auto;
+	
+}
+{% for block in section.blocks %}
+  {% if block.type == "image-transparency" %}
+      .section-{{ section.id }}-img-transparency{
+          position:relative;
+      }
+    .section-{{ section.id }}-img-transparency::before{
+		content: "";
+        width: {{block.settings.width}}px;
+    	height: {{block.settings.height}}px;
+        background-image:url("{{block.settings.image | img_url : "master" }}");
+        position:absolute;
+        position: absolute;
+        top: {{block.settings.top}}%;
+        left: {{block.settings.left}}%;
+        z-index: 0;
+        opacity: 0.3;
+        background-size: cover;
+	  }
+	 {% if block.settings.hidden_mobile %}
+	  @media screen and (max-width: 767px) {
+		.section-{{ section.id }}-img-transparency::before{
+			display:none;
+		}
+	  }
+	{% endif %}
+    
+
+  {% endif %}
+{% endfor %}
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+.services .section-title h1{
+	{% if section.settings.background-color %}
+	background: {{ section.settings.background-color }};
+	{% endif %}
+}
+
+.services .see-more-btn {
+  width: 150px;
+  height: 50px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  font-size: 2rem;
+  border-radius: 0px;
+  font-weight: 700;
+}
+
+.services .see-more-btn i {
+  margin-right: 8px;
+}
+
+.services::after {
+  width: 20%;
+  height: 100%;
+  max-width: 234px;
+  left: auto;
+  right: 0 !important;
+  border-radius: 0 0 0px 0px;
+}
+
+.services .card-wrapper {
+  background-color: transparent;   
+      width: 35vw;   
+      min-width: 340px;   
+      height: 35vw;   
+      min-height: 400px;   
+      -webkit-perspective: 1000px;
+      perspective: 1000px;   
+      z-index: 10;  
+      padding: 16px;
+}
+@media screen and (max-width: 1130px) {
+  .services .card-wrapper * {
+    border-radius: 0px;
+    border: none;
+
+  }
+	.services .card-wrapper{
+		background-color: transparent;
+        width: 432px;
+        min-width:340px;
+        height: 432px;
+        min-height: 400px;
+        -webkit-perspective: 1000px;
+                perspective: 1000px;
+        z-index: 10;
+        padding: 16px;
+	}
+}
+
+.services .card-wrapper .overlay::after {
+  opacity: 0.7;
+  border-radius:0px;
+}
+
+.services .card-wrapper .image-service {
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px
+}
+
+.services .card-wrapper .card-rotating {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-box-shadow: 0px 0px 46px -32px #2e2e2e;
+          box-shadow: 0px 0px 46px -32px #2e2e2e;
+}
+
+.services .card-wrapper:hover .card-rotating {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+}
+
+.services .card-wrapper .front, .services .card-wrapper .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+.services .card-wrapper .front {
+  background-color: #dadada;
+  color: white;
+}
+
+.services .card-wrapper .front * {
+  pointer-events: none;
+}
+
+.services .card-wrapper .front h4 {
+  font-family: var(--font-heading-family);
+}
+
+.services .card-wrapper .front h4, .services .card-wrapper .front .price {
+  z-index: 2;
+  font-size: 2.7rem;
+  font-weight: 600;
+  padding: 0 10px;
+  color:white;
+	
+
+}
+
+.services .card-wrapper .front .price {
+	  bottom: 10px;
+    /*right: 10px;*/
+    /*background: var(--secondary-dark);*/
+    /* border-radius: 0 0 0px 0px; */
+    font-size: 2rem;
+    padding: 5px;
+    width: 150px !important;
+
+
+}
+
+.services .card-wrapper .back {
+  background: white;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+
+}
+
+
+.services .card-wrapper .back .title-back{
+
+	color:var(--secondary);
+	font-weight: 600;
+	font-size: 2rem;
+}
+
+.services .card-wrapper p{
+	color: var(--gray-color) !important;
+} 
+.services .card-wrapper .back .btn {
+  width: 80%;
+  height: 40px;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  border-radius: 0px;
+}
+
+.services .card-wrapper .back .btn i {
+  margin-right: 8px;
+}
+
+.services .card-wrapper .back p, .services .card-wrapper .back span {
+  color: black;
+  max-height: 60%;
+  padding: 10px;
+  font-size: 1.6rem;
+  border-radius: 0 !important;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+@media screen and (max-width: 576px) {
+
+    .services .card-wrapper {
+        background-color: transparent;
+        width: 80vw;
+        min-width: 260px;
+        height: 80vw;
+        min-height: 330px;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+        z-index: 10;
+        padding: 18px;
+        max-width: 400px;
+        max-height: 400px;
+    }
+	.services .card-wrapper .back p, .services .card-wrapper .back span{
+		max-height: 51%;
+	}
+}
+.services .card-wrapper .back p::-webkit-scrollbar {
+  width: 3px !important;
+  height: 3px !important;
+  margin-left: -19px !important;
+}
+
+.services .card-wrapper .back p::-webkit-scrollbar-thumb {
+  background: var(--secondary) !important;
+  border-radius: 0px !important;
+  margin-left: -9px !important;
+}
+
+.services .card-wrapper .back p::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary-light) !important;
+  -webkit-box-shadow: 0 0 2px 1px rgba(56, 56, 56, 0) !important;
+          box-shadow: 0 0 2px 1px rgba(56, 56, 56, 0) !important;
+}
+
+.services .card-wrapper .back p::-webkit-scrollbar-thumb:active {
+  background-color: var(--primary) !important;
+}
+
+.services .text-content {
+  width: 100%;
+  height: 100%;
+  font-weight: 400px;
+  line-height: 1.5  !important; 
+  letter-spacing: 0px;
+}
+@media screen and (max-width: 767px) {
+	.services .text-content p{
+		text-align:center;
+		padding-bottom: 20px;
+	}
+}
+.services .owl-carousel .owl-item{
+	display:flex;
+	justify-content:center;
+}
+
+
+
+
+{%- endstyle -%}
+
+  <section class="section-{{ section.id }}-padding section-{{ section.id }} services page-width">
+   	
+   
+   	 <div class=" section-title pl-4 justify-content-start">
+       <h1 class="page-width"> {{section.settings.title-section}} </h1>
+     </div>
+            <div class="container-fluid section-{{section.id}}-img-transparency">
+
+                <div class="section-content row">
+                  
+                    <div data-aos="fade-right"
+                        class="col-12 col-md-4 text-content f-center flex-wrap justify-content-start h-auto">
+                       
+                            {{section.settings.description-section}}
+                        
+                      {% if  section.settings.button_label and section.settings.button_link %} 
+                        <a data-aos="fade-right" data-aos-delay="150" role="button" href="{{section.settings.button_link}}"
+                            class="d-none d-md-flex see-more-btn btn btn-3d btn-secondary mt-5">{{section.settings.button_label}}</a>
+                      {% endif %}
+                    </div>
+                    <div   class="owl-carousel owl-theme col-12 col-md-8 p-0">
+                        <!-- Rotating card -->
+                      {% for block in section.blocks %}
+                      	{% if block.type == "card-service" %}
+                      	
+                          <div class="card-wrapper">
+                            <div id="card-2" class="card card-rotating text-center">
+
+                                <!--Front Side-->
+                                <div class="face front">
+
+                                    <!-- Image-->
+                                    <div class="h-100 overlay f-center flex-wrap">
+                                     
+                                        <img loading="lazy" class="image-service" src="{{ block.settings.product.images.first |img_url : "master" }}"
+                                            alt="Service">
+                                        <h4 class="position-absolute title-card">{{block.settings.product.title}}</h4>
+                                        <div class="f-center w-100 price position-absolute">
+                                            <strong>{{block.settings.product.price | money }}</strong>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <!--Front Side-->
+
+                                <!--Back Side-->
+                                <div class="face back">
+
+                                    <!-- Content -->
+                                    <div class="content align-items-stretch text-center f-center flex-wrap h-100 ">
+                                      <h4 class="title-back"> {{block.settings.product.title}} </h4>
+                                        <p>{{block.settings.product.description | strip_html}}</p>
+      
+                                      	<div class="card-footer d-flex justify-content-between w-100 price px-4 container-footer-card">
+                                          <div class="price">{{block.settings.product.price | money }}</div>
+                                          <a href="{{block.settings.product.url}}" class="btn btn-secondary btn-3d f-center" role="button">
+                                            <i class="fa fa-shopping-cart"></i>
+                                          </a>
+                                        </div>
+                                    </div>
+
+                                    <!--Back Side-->
+
+                                </div>
+                            </div>
+                            <!-- Rotating card -->
+                        	</div>
+                        {% endif %}
+                      {% endfor %}
+                
+                    </div>
+                </div>
+              
+              {% if  section.settings.button_label and section.settings.button_link %} 
+                      
+
+                <div class="row justify-content-center d-flex d-md-none">
+                    <a href="{{section.settings.button_link}}" role="button" class="see-more-btn btn btn-3d btn-secondary mt-5">{{section.settings.button_label}}</a>
+                </div>
+                             {% endif %}
+            </div>
+    
+  </section>
+{% javascript %}
+	 $(document).ready(function () {
+            $('.services .owl-carousel').owlCarousel({
+                loop: true,
+                dots: true,
+                margin: 10,
+				autoplay: true,
+                autoplayTimeout: 4000,
+                autoplayHoverPause: true,
+			
+                responsive: {
+       
+                    0: {
+                        items: 1		
+                    },
+                    1130: {
+                        items: 2
+						
+                    }
+                }
+            })
+});
+{% endjavascript %}
+{% schema %}
+{
+  "name": "Custom Services Section",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Custom Colors"
+    },
+    {
+        "id": "background-color",
+        "type": "color",
+        "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+	{
+		"type": "text",
+		"id": "title-section",
+		"label": "Title"
+	},
+	{
+		"type": "richtext",
+		"id": "description-section",
+		"label": "Description"
+	},
+	{
+      "type": "header",
+      "content": "Button"
+    },
+
+                {
+                    "type": "text",
+                    "id": "button_label",
+                    "default": "Button label",
+                    "label": "Button text"
+                },
+                {
+                    "type": "url",
+                    "id": "button_link",
+                    "label": "Button_link"
+                }
+	
+  ],
+	"blocks": [
+		{
+			"type": "card-service",
+			"name": "Card Service",
+			"settings": [
+				{
+				"type" : "product",
+				"id": "product",
+				"label": "Select a Product"
+				}	
+			]
+			
+		},
+		{
+			"type": "image-transparency",
+			"limit": 1,
+			"name": "Image with transparency",
+			"settings": [
+				{
+				"type" : "image_picker",
+				"id": "image",
+				"label": "Select a image"
+				},
+				{
+                  "type": "range",
+                  "id": "top",
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "unit": "%",
+                  "label": "Top Position",
+                  "default": 40
+                },
+				{
+                  "type": "range",
+                  "id": "left",
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "unit": "%",
+                  "label": "Left Position",
+                  "default": 40
+                },
+				{
+                  "type": "range",
+                  "id": "width",
+                  "min": 50,
+                  "max": 500,
+                  "step": 5,
+                  "unit": "px",
+                  "label": "Width",
+                  "default": 100
+                },
+				{
+                  "type": "range",
+                  "id": "height",
+                  "min": 50,
+                  "max": 500,
+                  "step": 5,
+                  "unit": "px",
+                  "label": "Height",
+                  "default": 100
+                },
+				{
+					"type": "checkbox",
+					"id": "hidden_mobile",
+					"label": "Hidden in Mobile",
+					"default": true
+				}
+			]
+			
+		}
+	],
+  "presets": [
+    {
+      "name": "Custom Services Section"
+    }
+  ]
+}
+{% endschema %}

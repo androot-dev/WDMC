@@ -1,0 +1,435 @@
+{%- style -%}
+.section-{{ section.id }}-padding {
+  padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+  padding-bottom: calc({{ section.settings.padding_bottom }}px  * 0.75);
+}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.background-color }};
+  height:auto;
+}
+@media screen and (min-width: 750px) {
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+}
+
+.benefits .section-title h1{
+	{% if section.settings.background-color %}
+	background: {{ section.settings.background-color }};
+	{% endif %}
+}
+
+.benefits .container-image {
+  height: 100%;
+  width: 90%;
+  border-radius: 0px;
+  /* background: var(--secondary-dark);*/
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+	margin-left: -20px;
+	margin-bottom: -20px;
+	min-height: 250px;
+	max-height: {{section.settings.height-content}}px;
+	
+}
+@media screen and (max-width: 576px) {
+	.benefits .container-image{
+		padding-top: 40px !important;
+	}
+}
+@media screen and (min-width: 576px) {
+	.benefits .container-image{
+		width: 100%;
+		
+	}
+}
+.benefits .container-image img {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  -o-object-fit: cover;
+  border-radius: 0px;
+  margin-right: -20px;
+  margin-top: -20px;
+  -o-object-position: {{section.settings.image_position_y}} {{section.settings.image_position_x}};
+     object-position:   {{section.settings.image_position_y}} {{section.settings.image_position_x}};
+}
+
+.benefits .line {
+  height: {{section.settings.height-content}}px;
+  width: 1px;
+  background: #dadada;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 35px;
+	margin-left: 55px;
+}
+
+.benefits .line .square {
+  border-radius: 0px;
+  background: var(--secondary-dark);
+  padding: 20px;
+  height: 80px;
+  width: 80px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+
+	
+}
+
+.benefits .line .square i {
+  font-size: 40px;
+  color: white;
+}
+
+.benefits .descriptions {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: flex-end;
+      -ms-flex-align: flex-end;
+          align-items: flex-end;
+  height: {{section.settings.height-content}}px;
+  margin-top: 0px;
+}
+
+@media screen and (max-width: 576px) {
+	.benefits .descriptions {
+		padding-left: 0;
+	}
+	.benefits .line{
+		margin: 0 20px;
+    	margin-left: 42px;
+	}
+	.benefits .line .square{
+		width:60px;
+		height:60px;
+	}
+	.benefits .line .square i{
+		font-size: 35px;
+	}
+	
+}
+
+.benefits .descriptions{
+	width: 100%;
+}
+.benefits .descriptions .description {
+  height: 90px;
+}
+
+.benefits .descriptions .description h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--gray-color-dark);
+  text-align: right !important;
+}
+
+.benefits .descriptions .description p {
+  line-height: 27px;
+  text-align: right !important;
+    word-break: break-word;
+}
+.font-icon-back.position-absolute {
+    font-size: 300px;
+    /* font-weight: 100; */
+    right: 25%;
+    bottom: 10%;
+    opacity: 0.1;
+}
+
+
+{%- endstyle -%}
+
+  <section class=" section-{{ section.id }}-padding section-{{ section.id }} page-width benefits my-section">
+        <div class=" section-title pl-4 justify-content-end">
+                <h1 class="page-width"> {{ section.settings.title-section }} </h1>
+    </div> 
+    <div class="container-fluid p-0 m-0 position-relative"> 
+      {% for block in section.blocks %}
+      
+      	{% if block.type == "icon-background" %}
+      		
+          <div style=" font-size:{{block.settings.size}}px;  top: {{block.settings.top}}%; left: {{block.settings.left}}%;" class="font-icon-back position-absolute">
+              <i class="{% if block.settings.hidden_mobile %} d-sm-block d-none {% endif %} {{block.settings.icon}}"></i>	   
+          </div>
+      
+      	{% endif %}
+      
+      {% endfor %}
+    
+       
+  
+            <div class="container mt-4 mt-sm-5">
+                <div class="row justify-content-center">
+                    <div class="col-md-6 p-0 p-sm-5 col-12 d-flex justify-content-center">
+                        <div class="container-image ">
+                            <img src="{{ section.settings.image | img_url : "master"}}" alt="" >
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12 d-flex py-5  mt-5 mt-sm-0">
+                      
+                      
+                        <div data-aos="fade-right" data-aos-delay="150" class="descriptions d-flex justify-content-between">
+                           {% for block in section.blocks %}
+                      		{% if block.type == "benefit" %}
+                            <div class="description">
+                                <h3>{{block.settings.title}}</h3>
+                                <p>{{block.settings.description}}</p>
+                            </div>
+                          {% endif %}
+                         {% endfor %}
+                        </div>
+                        <div data-aos="fade-right" class="line d-flex justify-content-between">
+                            {% for block in section.blocks %}
+                      		{% if block.type == "benefit" %}
+                            <div class="square">
+                                <i class="fa fal fas {{block.settings.icon}}"></i>
+                            </div>
+                           {% endif %}
+                         {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    
+  </section>
+
+{% schema %}
+{
+  "name": "Custom Benefits",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+	{
+      "type": "range",
+      "id": "height-content",
+      "min": 300,
+      "max": 700,
+      "step": 4,
+      "unit": "px",
+      "label": "height content",
+      "default": 500
+    },
+	{
+      "type": "header",
+      "content": "Image Position"
+    },
+	{
+        "id": "image_position_x",
+        "type": "select",
+        "label": "Position Image X",
+		"options": [
+      	{
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        },
+		{
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "bottom",
+          "label": "bottom"
+        },
+		{
+          "value": "top",
+          "label": "top"
+        }
+      ]
+    },
+	{
+        "id": "image_position_y",
+        "type": "select",
+        "label": "Position Image Y",
+		"options": [
+      	{
+          "value": "center",
+          "label": "center"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        },
+		{
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "bottom",
+          "label": "bottom"
+        },
+		{
+          "value": "top",
+          "label": "top"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Custom Colors"
+    },
+    {
+        "id": "background-color",
+        "type": "color",
+        "label": "Background Color"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 52
+    },
+	{
+		"type": "text",
+		"id": "title-section",
+		"label": "Title"
+	},
+	{
+		"type": "image_picker",
+		"id": "image",
+		"label": "Select a Image"
+	}
+  ],
+"blocks":[{
+	"type":"benefit",
+	"name": "Benefit",
+	"settings": [
+		 {
+
+              "type": "text",
+              "id": "title",
+			  "label": "Description"
+          },
+		  {
+
+              "type": "text",
+              "id": "icon",
+			  "label": "Font awesome icon",
+			  "default": "fa-home"
+          },
+          {
+
+              "type": "textarea",
+              "id": "description",
+			  "label": "Description"
+          }
+		]
+},
+{
+			"type": "icon-background",
+			"name": "Icon on background",
+			"settings": [
+				{
+				"type" : "text",
+				"id": "icon",
+				"label": "Icon Fontawesome"
+				},
+				{
+                  "type": "range",
+                  "id": "top",
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "unit": "%",
+                  "label": "Top Position",
+                  "default": 40
+                },
+				{
+                  "type": "range",
+                  "id": "left",
+                  "min": 0,
+                  "max": 100,
+                  "step": 1,
+                  "unit": "%",
+                  "label": "Left Position",
+                  "default": 40
+                },
+				{
+                  "type": "range",
+                  "id": "size",
+                  "min": 50,
+                  "max": 500,
+                  "step": 5,
+                  "unit": "px",
+                  "label": "Size",
+                  "default": 100
+                },
+				{
+					"type": "checkbox",
+					"id": "hidden_mobile",
+					"label": "Hidden in Mobile",
+					"default": true
+				}
+			]
+			
+		}
+
+
+],
+  "presets": [
+    {
+      "name": "Custom Benefits"
+    }
+  ]
+}
+{% endschema %}

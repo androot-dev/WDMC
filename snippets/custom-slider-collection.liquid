@@ -1,0 +1,79 @@
+
+<div class="pb-5 px-sm-5 px-3 container-fluid {{class}} ">
+
+    <div class="row justify-content-center">
+      <h1 class="title-section text-center px-4 w-100">{{ collection.title }}</h1>
+    </div>
+    <div id="category-{{ collection.id }}" class="owl-carousel owl-theme ">
+        {% for product in collection.products %}        
+         {% render "custom-product", product: product %}
+        {% endfor %} 
+    </div>
+    <script>
+        $(document).ready(function(){
+            $("#category-{{collection.id}}").owlCarousel({
+                loop: true,
+                nav: false,
+                margin: 150,
+                items: 1,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                center: true,
+                responsive: {
+                    500: {
+                        center: false,
+                        items: 2,
+                        margin: 50
+                    },
+                    860: {
+                        items: 3,
+                        margin: 50
+                    }
+                }
+            });
+        })
+       
+      </script>   
+
+</div>
+
+{% style %}
+    .menu-food-sub .title-section {
+        padding-bottom: 50px;
+        padding-top: 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -ms-flex-wrap: nowrap;
+            flex-wrap: nowrap;
+        -webkit-box-align: end;
+            -ms-flex-align: end;
+                align-items: flex-end;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        position: relative;
+    }
+
+    .menu-food-sub .title-section:before {
+        content: "";
+        background: var(--primary);
+        width: 80%;
+        height: 2px;
+        position: absolute;
+        width: 20%;
+        bottom: 35px;
+    }
+
+    @media (max-width: 575px) {
+        .menu-food-sub .title-section:before {
+            display: none;
+        }
+    }
+    
+{% endstyle %}
